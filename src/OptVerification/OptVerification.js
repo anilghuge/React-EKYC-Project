@@ -1,6 +1,14 @@
 import React from "react";
 import { Button, TextField, Container, Grid} from "@mui/material";
+import { useNavigate } from "react-router-dom";
+
 function OptVerification(){
+  const navigate = useNavigate();
+
+  const handleVerifyClick = () => {
+
+    navigate("/email"); 
+  };
     return (
         <Container>
           <Grid
@@ -19,7 +27,7 @@ function OptVerification(){
                 placeholder="Enter your mobile number here"
                 margin="normal"
               />
-              <Button variant="contained" color="primary" fullWidth>
+              <Button variant="contained" color="primary" fullWidth onClick={handleVerifyClick}>
                 Verify
               </Button>
             </Grid>

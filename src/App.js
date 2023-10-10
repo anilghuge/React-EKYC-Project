@@ -4,6 +4,8 @@ import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
 import OptVerification from "./OptVerification/OptVerification";
 import SignUp from "./SignUp/SignUp";
+import Email from "./Email/Email";
+import EmailOtpVerification from "./EmailOtpVerification/EmailOtpVerification";
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
           <Routes>
             <Route path="/" element={<SignUp />} />
             <Route path="/optverification/*" element={<OptVerification />} />
+            <Route path="/email/*" element={< Email/>} />
+            <Route path="/emailotpverification/*" element={< EmailOtpVerification/>} />
           </Routes>
           <Footer />
         </header>
