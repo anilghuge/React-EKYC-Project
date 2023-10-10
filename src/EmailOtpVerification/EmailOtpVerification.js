@@ -9,7 +9,7 @@ export default function EmailOtpVerification() {
 
     const handleOtpVerifyClick = () => {
 
-        navigate("/");
+        navigate("/panverification");
     }
   return (
     <Container>

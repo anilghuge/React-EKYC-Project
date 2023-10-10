@@ -6,6 +6,8 @@ import OptVerification from "./OptVerification/OptVerification";
 import SignUp from "./SignUp/SignUp";
 import Email from "./Email/Email";
 import EmailOtpVerification from "./EmailOtpVerification/EmailOtpVerification";
+import Pan from "./PAN/Pan";
+import PanDetails from "./PAN/PanDetails";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
             <Route path="/optverification/*" element={<OptVerification />} />
             <Route path="/email/*" element={< Email/>} />
             <Route path="/emailotpverification/*" element={< EmailOtpVerification/>} />
+            <Route path="/panverification/*" element={<Pan/>} />
+            <Route path="/showpandetails/*" element={<PanDetails/>} />
           </Routes>
           <Footer />
         </header>
