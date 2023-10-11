@@ -9,6 +9,11 @@ import EmailOtpVerification from "./EmailOtpVerification/EmailOtpVerification";
 import Pan from "./PAN/Pan";
 import PanDetails from "./PAN/PanDetails";
 import AdhaarKYC from "./AdhaarKYC/AdhaarKYC";
+import BankDetails from "./BankDetails/BankDetails";
+import InvalidBank from "./BankDetails/InvalidBank";
+import UploadBankProof from "./BankDetails/UploadBankProof";
+import ESignPage from "./ESign/ESign";
+import CongratulationsPage from "./Congratulation/Congratulation";
 
 function App() {
   return (
@@ -23,7 +28,12 @@ function App() {
             <Route path="/emailotpverification/*" element={< EmailOtpVerification/>} />
             <Route path="/panverification/*" element={<Pan/>} />
             <Route path="/showpandetails/*" element={<PanDetails/>} />
-            <Route path="/submission-success/*" element={<AdhaarKYC/>} />
+            <Route path="/adhaarkyc/*" element={<AdhaarKYC/>} />
+            <Route path="/bankdetails/*" element={<BankDetails/>} />
+            <Route path="/invalidbank/*" element={<InvalidBank/>} />
+            <Route path="/uploadbankproof/*" element={<UploadBankProof/>} />
+            <Route path="/esign/*" element={<ESignPage/>} />
+            <Route path="/congratulation/*" element={<CongratulationsPage/>} />
           </Routes>
           <Footer />
         </header>
