@@ -14,6 +14,7 @@ import InvalidBank from "./BankDetails/InvalidBank";
 import UploadBankProof from "./BankDetails/UploadBankProof";
 import ESignPage from "./ESign/ESign";
 import CongratulationsPage from "./Congratulation/Congratulation";
+import Photo from "./PhotoVerification/Photo";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
             <Route path="/uploadbankproof/*" element={<UploadBankProof/>} />
             <Route path="/esign/*" element={<ESignPage/>} />
             <Route path="/congratulation/*" element={<CongratulationsPage/>} />
+            <Route path="/photo/*" element={<Photo/>} />
           </Routes>
           <Footer />
         </header>
