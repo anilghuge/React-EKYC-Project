@@ -3,17 +3,16 @@ import { Container, Grid, LinearProgress, Typography, Button} from "@mui/materia
 import { useNavigate } from "react-router-dom";
 import Paper from '@mui/material/Paper';
 
-export default function Photo() {
+export default function PhotoVerification() {
 
     const navigate = useNavigate();
     const [progress, setProgress] = useState(0);
   
-    const PhotoUpload = (event) => {
-        navigate("/photoverification");
+    const handleChange = (event) => {
     };
 
-    return (
-        <Container>
+  return (
+    <Container>
           <Grid
             container
             spacing={2}
@@ -41,12 +40,15 @@ export default function Photo() {
             <Grid item xs={12} sm={6}>
                 <Paper elevation={3} sx={{ padding: '12px', maxWidth: '220px', margin: '0 auto', }}>
                     <img src="avatar.jpg" alt="Avatar" style={{ width: "220px", height: "20%" }} />
-                    <Button variant="contained" color="primary" fullWidth onclick={PhotoUpload}>
-                        Capture
+                    <Button variant="contained" color="primary" sx={{mr: "30px"}}>
+                        Confirm
+                    </Button>
+                    <Button variant="contained" color="primary">
+                        Retake
                     </Button>
                 </Paper>
             </Grid>
           </Grid>
         </Container>
-      )
+  )
 }
