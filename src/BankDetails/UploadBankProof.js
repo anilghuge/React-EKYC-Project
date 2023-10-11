@@ -63,7 +63,7 @@ export default function UploadBankProof() {
                 variant="contained"
                 color="primary"
                 fullWidth
-                onClick={() => navigate("/")}
+                onClick={() => navigate("/photo")}
               >
                 Proceed
               </Button>
