@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, TextField, Container, Grid} from "@mui/material";
+import { Button, TextField, Container, Grid,Typography} from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 function OptVerification(){
@@ -19,12 +19,14 @@ function OptVerification(){
             style={{ minHeight: "50vh" }}
           >
             <Grid item xs={12} sm={6}>
-
+            <Typography variant="h5" gutterBottom>
+              Verify OTP
+          </Typography>
               <TextField
-                id="mobileNumber"
-                label="Mobile Number"
+                id="verifyOtp"
+                label="OTP"
                 fullWidth
-                placeholder="Enter your mobile number here"
+                placeholder="Enter OTP here"
                 margin="normal"
               />
               <Button variant="contained" color="primary" fullWidth onClick={handleVerifyClick}>
@@ -32,7 +34,7 @@ function OptVerification(){
               </Button>
             </Grid>
             <Grid item xs={12} sm={6}>
-        <img src="MobileVerfication.jfif" alt="MobileVerfication" style={{ width: "70%", height: "50%" }}
+        <img src="EnterOtp.avif" alt="OTPVerfication" style={{ width: "70%", height: "50%" }}
         />
         </Grid>
           </Grid>

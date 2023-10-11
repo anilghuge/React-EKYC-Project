@@ -21,8 +21,11 @@ function SignUp() {
         style={{ minHeight: "50vh" }}
       >
         <Grid item xs={12} sm={6}>
-          <Typography variant="h5" gutterBottom>
+          <Typography variant="h3" gutterBottom>
             Sign Up
+          </Typography>
+          <Typography variant="h6" gutterBottom>
+            or track existing application
           </Typography>
           <TextField
             id="mobileNumber"
