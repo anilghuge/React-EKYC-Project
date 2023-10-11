@@ -3,12 +3,12 @@ import { Button, TextField, Container, Grid, Typography} from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 
-export default function EmailOtpVerification() {
+export default function EmailOtpVerification({handleVerification}) {
 
     const navigate = useNavigate();
 
     const handleOtpVerifyClick = () => {
-
+        handleVerification();
         navigate("/panverification");
     }
   return (

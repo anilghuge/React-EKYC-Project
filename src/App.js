@@ -1,5 +1,6 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+
 import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
 import OptVerification from "./OptVerification/OptVerification";
@@ -18,30 +19,78 @@ import Photo from "./PhotoVerification/Photo";
 import PhotoVerification from "./PhotoVerification/PhotoVerification";
 
 function App() {
+  const [authenticated, setAuthenticated] = useState(false);
+  const [mobileotpauthenticated,setMobileOtpAuthenticated]=useState(false);
+  
+  const handleOTPVerification = () => {
+    setMobileOtpAuthenticated(true);
+  }
+
+  const handleVerification=()=>{
+    setAuthenticated(true);
+  }
   return (
     <Router>
-      <div className="App">
-        <header className="App-header">
-          <Header />
-          <Routes>
-            <Route path="/" element={<SignUp />} />
-            <Route path="/optverification/*" element={<OptVerification />} />
-            <Route path="/email/*" element={< Email/>} />
-            <Route path="/emailotpverification/*" element={< EmailOtpVerification/>} />
-            <Route path="/panverification/*" element={<Pan/>} />
-            <Route path="/showpandetails/*" element={<PanDetails/>} />
-            <Route path="/adhaarkyc/*" element={<AdhaarKYC/>} />
-            <Route path="/bankdetails/*" element={<BankDetails/>} />
-            <Route path="/invalidbank/*" element={<InvalidBank/>} />
-            <Route path="/uploadbankproof/*" element={<UploadBankProof/>} />
-            <Route path="/esign/*" element={<ESignPage/>} />
-            <Route path="/congratulation/*" element={<CongratulationsPage/>} />
-            <Route path="/photo/*" element={<Photo/>} />
-            <Route path="/photoverification/*" element={<PhotoVerification/>} />
-          </Routes>
-          <Footer />
-        </header>
-      </div>
+      <Header />
+      <Routes>
+        <Route
+          path="/"
+          element={<SignUp/>}
+        />
+        <Route
+          path="/optverification/*"
+          element={<OptVerification handleOTPVerification={handleOTPVerification}/>}
+        />
+        <Route
+          path="/email/*"
+          element={mobileotpauthenticated?<Email />:<Navigate to="/" />}
+        />
+        <Route
+          path="/emailotpverification/*"
+          element={mobileotpauthenticated?<EmailOtpVerification handleVerification={handleVerification}/>:<Navigate to="/" />}
+        />
+        <Route
+          path="/panverification/*"
+          element={authenticated ? <Pan /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/showpandetails/*"
+          element={authenticated ? <PanDetails /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/adhaarkyc/*"
+          element={authenticated ? <AdhaarKYC /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/bankdetails/*"
+          element={authenticated ? <BankDetails /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/invalidbank/*"
+          element={authenticated ? <InvalidBank /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/uploadbankproof/*"
+          element={authenticated ? <UploadBankProof /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/esign/*"
+          element={authenticated ? <ESignPage /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/congratulation/*"
+          element={authenticated ? <CongratulationsPage /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/photo/*"
+          element={authenticated ? <Photo /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/photoverification/*"
+          element={authenticated ? <PhotoVerification /> : <Navigate to="/" />}
+        />
+      </Routes>
+      <Footer />
     </Router>
   );
 }
