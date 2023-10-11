@@ -39,7 +39,7 @@ function SignUp() {
           </Button>
         </Grid>
         <Grid item xs={12} sm={6}>
-        <img src="SignUp.png" alt="Signup" style={{ width: "100%", height: "auto" }}
+        <img src="SignUp.avif" alt="Signup" style={{ width: "100%", height: "auto" }}
         />
         </Grid>
       </Grid>

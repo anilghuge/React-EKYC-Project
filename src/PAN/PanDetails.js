@@ -21,7 +21,7 @@ function PanDetails() {
   };
 
   const handleSubmit = () => {
-    navigate("/submission-success");
+    navigate("/adhaarkyc");
   };
 
   return (
