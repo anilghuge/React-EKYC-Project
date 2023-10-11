@@ -8,6 +8,7 @@ import Email from "./Email/Email";
 import EmailOtpVerification from "./EmailOtpVerification/EmailOtpVerification";
 import Pan from "./PAN/Pan";
 import PanDetails from "./PAN/PanDetails";
+import AdhaarKYC from "./AdhaarKYC/AdhaarKYC";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/emailotpverification/*" element={< EmailOtpVerification/>} />
             <Route path="/panverification/*" element={<Pan/>} />
             <Route path="/showpandetails/*" element={<PanDetails/>} />
+            <Route path="/submission-success/*" element={<AdhaarKYC/>} />
           </Routes>
           <Footer />
         </header>
