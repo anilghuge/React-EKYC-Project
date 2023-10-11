@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
+import { Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
 
 export default function AdhaarKYC() {
 
@@ -13,8 +14,13 @@ export default function AdhaarKYC() {
   const handleChange = (event) => {
   };
 
-  const handleProceedClick = () => {
-    navigate("/");
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
   };
 
   return (
@@ -40,9 +46,30 @@ export default function AdhaarKYC() {
                 label="Check this box"
               />
             </FormGroup>
-          <Button variant="contained" color="primary" fullWidth onClick={handleProceedClick}>
+          <Button variant="contained" color="primary" fullWidth onClick={handleOpen}>
             Proceed to Digilocker
           </Button> 
+
+            <Dialog open={open} onClose={handleClose}>
+              <DialogTitle>Title</DialogTitle>
+                <DialogContent>
+                <div style={{ textAlign: "center" }}>
+                  <img
+                    src="RightSymbol.png"
+                    alt="RightSymbol"
+                    style={{ width: "20%", height: "20%" }}
+                  />
+                </div>
+                  <center><h2>Success!</h2></center>
+                  <p>We have successfully obtained your Adhaar details from digilocker.</p>
+                </DialogContent>
+                <DialogActions>
+                  <Button onClick={handleClose} color="primary">
+                    Close
+                  </Button>
+                </DialogActions>
+          </Dialog>
+
         </Grid>
         <Grid item xs={12} sm={6}>
           <Typography variant="h6" gutterBottom>
