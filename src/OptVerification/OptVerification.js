@@ -17,6 +17,10 @@ function OptVerification({ handleOTPVerification }) {
     }
   };
 
+  const handleSignUpClick = () => {
+    navigate("/");
+  };
+
   useEffect(() => {
     const storedMobileNumber = localStorage.getItem("mobileNumber");
 
@@ -52,6 +56,9 @@ function OptVerification({ handleOTPVerification }) {
           <Typography variant="h6" gutterBottom>
             Mobile Number: {formattedMobileNumber}
           </Typography>
+          <Button variant="text" color="primary" onClick={handleSignUpClick}>
+            Change
+          </Button>
           {error && (
             <Typography variant="body2" color="error">
               {error}

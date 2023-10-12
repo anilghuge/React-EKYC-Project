@@ -11,6 +11,7 @@ function Email() {
     const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 
     if (emailPattern.test(email)) {
+      localStorage.setItem("email", email);
       navigate("/emailotpverification");
     } else {
       setError("Invalid Email Address. Please enter a valid email.");

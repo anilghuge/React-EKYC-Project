@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, TextField, Container, Grid, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
@@ -6,22 +6,47 @@ export default function EmailOtpVerification({ handleVerification }) {
   const navigate = useNavigate();
   const [otp, setOtp] = useState("");
   const [error, setError] = useState("");
-
+  const [email, setEmail] = useState("");
   const handleOtpVerifyClick = () => {
-    if (/^\d{1,4}$/.test(otp)) { // Allow only numbers and max 4 digits
+    if (/^\d{1,4}$/.test(otp)) { // Allow only numbers and a maximum of 4 digits
       handleVerification();
       navigate("/panverification");
     } else {
       setError("Invalid OTP. Please enter a valid OTP (up to 4 digits).");
     }
   }
-
+  
   // Event handler to validate OTP input
   const handleInput = (e) => {
     const input = e.target.value;
     if (/^\d*$/.test(input) && input.length <= 4) {
       setOtp(input);
     }
+  };
+
+  const handleEmailClick = () => {
+    navigate("/email");
+  };
+  
+  useEffect(() => {
+    const storedEmail = localStorage.getItem("email");
+
+    if (storedEmail) {
+      setEmail(storedEmail);
+    }
+    localStorage.removeItem("email");
+  }, []);
+  
+  // Function to display email with the first character and asterisks
+  const displayEmail = () => {
+    if (email) {
+      const atIndex = email.indexOf("@");
+      if (atIndex > 0) {
+        const visiblePart = email[0] + "*".repeat(atIndex - 1);
+        return visiblePart + email.substring(atIndex);
+      }
+    }
+    return email;
   };
 
   return (
@@ -37,6 +62,12 @@ export default function EmailOtpVerification({ handleVerification }) {
           <Typography variant="h5" gutterBottom>
             Verify Email OTP
           </Typography>
+          <Typography variant="h6" gutterBottom>
+            Sent to {displayEmail()}
+          </Typography>
+          <Button variant="text" color="primary" onClick={handleEmailClick}>
+            Change
+          </Button>
           <TextField
             id="emailotpverify"
             label="Enter Email OTP here!"
