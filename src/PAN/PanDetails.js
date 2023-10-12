@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 
 function PanDetails() {
   const navigate = useNavigate();
-  const [panNumber, setPanNumber] = useState("BQHJU49778");
-  const [name, setName] = useState("Mr.MAYUR JHADHAV");
-  const [fatherName, setFatherName] = useState("Mr. SUYASH JHADHAV");
+  const [panNumber, setPanNumber] = useState("");
+  const [name, setName] = useState("");
+  const [fatherName, setFatherName] = useState("");
 
   const handlePanNumberChange = (event) => {
     setPanNumber(event.target.value);
