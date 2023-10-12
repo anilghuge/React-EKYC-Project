@@ -1,12 +1,15 @@
 import React from "react";
-import { AppBar, Toolbar } from "@mui/material";
+import { AppBar, Toolbar, Button } from "@mui/material"; // Import Button from @mui/material
 
-function Header() {
+function Header({ authenticated, handleLogout }) {
   return (
     <AppBar position="static">
       <Toolbar>
         <img src="/logo2.jfif" alt="Logo" />
       </Toolbar>
+      {authenticated && (
+        <Button onClick={handleLogout} style={{ color: 'red' }}>LOGOUT</Button>
+      )}
     </AppBar>
   );
 }

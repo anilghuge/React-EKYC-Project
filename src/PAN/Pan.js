@@ -9,10 +9,12 @@ function Pan() {
 
   const handlePanChange = (event) => {
     const newValue = event.target.value;
-    setPanNumber(newValue);
-
-    const percentage = (newValue.length / 10) * 100; 
-    setProgress(percentage);
+    
+    if (newValue.length <= 10) { // Limit input to 10 characters
+      setPanNumber(newValue);
+      const percentage = (newValue.length / 10) * 100;
+      setProgress(percentage);
+    }
   };
 
   const handleProceedClick = () => {
@@ -40,11 +42,11 @@ function Pan() {
             placeholder="Enter your PAN number here"
             margin="normal"
             value={panNumber}
-            onChange={handlePanChange}
+            onInput={handlePanChange} // Handle input length
           />
           <Button variant="contained" color="primary" fullWidth onClick={handleProceedClick}>
             Submit
-          </Button> 
+          </Button>
         </Grid>
         <Grid item xs={12} sm={6}>
           <img src="MobileVerfication.jfif" alt="MobileVerfication" style={{ width: "100%", height: "auto" }} />

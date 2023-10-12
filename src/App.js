@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Navigate} from "react-router-dom"; // Import useNavigate
 
 import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
@@ -20,18 +20,25 @@ import PhotoVerification from "./PhotoVerification/PhotoVerification";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
-  const [mobileotpauthenticated,setMobileOtpAuthenticated]=useState(false);
-  
+  const [mobileotpauthenticated, setMobileOtpAuthenticated] = useState(false);
+
   const handleOTPVerification = () => {
     setMobileOtpAuthenticated(true);
   }
 
-  const handleVerification=()=>{
+  const handleVerification = () => {
     setAuthenticated(true);
   }
+
+  const handleLogout = () => {
+    setAuthenticated(false);
+    setMobileOtpAuthenticated(false);
+    <Navigate to="/" />
+  }
+
   return (
     <Router>
-      <Header />
+      <Header authenticated={authenticated} handleLogout={handleLogout} />
       <Routes>
         <Route
           path="/"
