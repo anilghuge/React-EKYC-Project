@@ -6,19 +6,22 @@ export default function UploadBankProof() {
   const navigate = useNavigate();
   const [file, setFile] = useState(null);
   const [uploadSuccess, setUploadSuccess] = useState(false);
+  const [error, setError] = useState("");
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
     setFile(selectedFile);
+    setError(""); 
   };
 
   const handleUpload = () => {
-    // Simulate file upload and success
-    // You can replace this with your actual file upload logic
-    if (file) {
+    if (!file) {
+      setError("Please select a file");
+    } else {
       setUploadSuccess(true);
     }
   };
+
   return (
     <Container>
       <Grid
@@ -38,6 +41,7 @@ export default function UploadBankProof() {
               accept=".pdf, .jpg, .png"
               onChange={handleFileChange}
             />
+            {error && <div style={{ color: "red" }}>{error}</div>}
             <Button
               variant="contained"
               color="primary"
