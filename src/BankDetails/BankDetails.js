@@ -10,21 +10,26 @@ function BankDetails() {
   const [micrCode, setMicrCode] = useState("");
   const [consentBankDetails, setConsentBankDetails] = useState(false);
   const [consentTAndC, setConsentTAndC] = useState(false);
+  const [error, setError] = useState("");
 
   const handleBankAccountNumberChange = (event) => {
-    setBankAccountNumber(event.target.value);
+    const cleanedBankAccountNumber = event.target.value;
+    setBankAccountNumber(cleanedBankAccountNumber);
   };
 
   const handleConfirmAccountNumberChange = (event) => {
-    setConfirmAccountNumber(event.target.value);
+    const cleanedConfirmAccountNumber = event.target.value;
+    setConfirmAccountNumber(cleanedConfirmAccountNumber);
   };
 
   const handleIfscCodeChange = (event) => {
-    setIfscCode(event.target.value);
+    const cleanedIfscCode = event.target.value;
+    setIfscCode(cleanedIfscCode);
   };
 
   const handleMicrCodeChange = (event) => {
-    setMicrCode(event.target.value);
+    const cleanedMicrCode = event.target.value;
+    setMicrCode(cleanedMicrCode);
   };
 
   const handleConsentBankDetailsChange = (event) => {
@@ -36,8 +41,30 @@ function BankDetails() {
   };
 
   const handleSubmit = () => {
+  if (bankAccountNumber === '') {
+    setError("Bank Account Number is required.");
+  } else if (!/^\d{16}$/.test(bankAccountNumber)) {
+    setError("Invalid Bank Account Number. Please enter a 10-digit number.");
+  } else if (confirmAccountNumber === '') {
+    setError("Please confirm your bank account number.");
+  } else if (ifscCode === '') {
+    setError("Please enter IFSC Code.");
+  } else if (!/^[A-Z]{4}\d{7}$/.test(ifscCode)) {
+    setError("Invalid IFSC Code. Please enter a valid IFSC Code.");
+  } else if (micrCode === '') {
+    setError("Please enter MICR Code.");
+  } else if (!/^\d{11}$/.test(micrCode)) {
+    setError("Invalid MICR Code. Please enter a 9-digit number.");
+  } else if (!consentBankDetails) {
+    setError("Please provide consent for bank details access by checking the checkbox.");
+  } else if (!consentTAndC) {
+    setError("Please provide consent for T&C.");
+  } else {
+    // Validation successful, you can proceed
+    localStorage.setItem("bankAccountNumber", bankAccountNumber);
     navigate("/invalidbank");
-  };
+  }
+};  
 
   return (
     <Container>
@@ -60,6 +87,9 @@ function BankDetails() {
             margin="normal"
             value={bankAccountNumber}
             onChange={handleBankAccountNumberChange}
+            inputProps={{
+              maxLength: 16
+            }}
           />
           <TextField
             id="confirmAccountNumber"
@@ -69,6 +99,9 @@ function BankDetails() {
             margin="normal"
             value={confirmAccountNumber}
             onChange={handleConfirmAccountNumberChange}
+            inputProps={{
+              maxLength: 16
+            }}
           />
           <TextField
             id="ifscCode"
@@ -78,6 +111,9 @@ function BankDetails() {
             margin="normal"
             value={ifscCode}
             onChange={handleIfscCodeChange}
+            inputProps={{
+              maxLength: 11
+            }}
           />
           <TextField
             id="micrCode"
@@ -87,9 +123,12 @@ function BankDetails() {
             margin="normal"
             value={micrCode}
             onChange={handleMicrCodeChange}
+            inputProps={{
+              maxLength: 11
+            }}
           />
-          </Grid>
-          <Grid item xs={12} sm={6}>
+        </Grid>
+        <Grid item xs={12} sm={6}>
           <FormControlLabel
             control={
               <Checkbox
@@ -110,6 +149,7 @@ function BankDetails() {
             }
             label="Consent for T&C"
           />
+          {error && <div style={{ color: "red" }}>{error}</div>}
           <Button
             variant="contained"
             color="primary"

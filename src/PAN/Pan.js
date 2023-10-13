@@ -9,20 +9,16 @@ function Pan() {
 
   const handlePanChange = (event) => {
     const newValue = event.target.value;
-    const sanitizedValue = newValue.slice(0, 10); // Limit input to 10 characters
-
-    setPanNumber(sanitizedValue);
-    const percentage = (sanitizedValue.length / 10) * 100;
-    setProgress(percentage);
-  };
-  const [error, setError] = useState("");
-  const handleProceedClick = () => {
-    if(panNumber.length===10){
-      navigate("/showpandetails");
-    }else{
-      setError("Please enter a valid PAN.");
-    }
     
+    if (newValue.length <= 10) { // Limit input to 10 characters
+      setPanNumber(newValue);
+      const percentage = (newValue.length / 10) * 100;
+      setProgress(percentage);
+    }
+  };
+
+  const handleProceedClick = () => {
+    navigate("/showpandetails");
   };
 
   return (
@@ -39,11 +35,6 @@ function Pan() {
             Progress: {Math.round(progress)}%
           </Typography>
           <LinearProgress variant="determinate" value={progress} sx={{ width: "70%", height: "12px" }} />
-          {error && (
-            <Typography variant="body2" color="error">
-              {error}
-            </Typography>
-          )}
           <TextField
             id="panNumber"
             label="Your Pan Details"
@@ -58,7 +49,7 @@ function Pan() {
           </Button>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <img src="panverification.png" alt="MobileVerification" style={{ width: "100%", height: "auto" }} />
+          <img src="panverification.png" alt="MobileVerfication" style={{ width: "100%", height: "auto" }} />
         </Grid>
       </Grid>
     </Container>
