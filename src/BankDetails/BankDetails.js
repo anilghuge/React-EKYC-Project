@@ -60,7 +60,6 @@ function BankDetails() {
   } else if (!consentTAndC) {
     setError("Please provide consent for T&C.");
   } else {
-    // Validation successful, you can proceed
     localStorage.setItem("bankAccountNumber", bankAccountNumber);
     navigate("/invalidbank");
   }

@@ -14,22 +14,29 @@ export default function AdhaarKYC() {
   const navigate = useNavigate();
   const [progress, setProgress] = useState(0);
   const [openDialog, setOpenDialog] = useState(false);
+  const [adhaarKYC, setadhaarKYC] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (event) => {
+    setadhaarKYC(event.target.checked);
+    setError(""); 
   };
 
   const handleProceedClick = () => {
-    // Simulate data retrieval from Digilocker
-    // You can replace this with your actual logic
-    setProgress(100);
-
-    // Show the success dialog
-    setOpenDialog(true);
+    if (!adhaarKYC) {
+      setError("Please check the box to proceed with Adhaar KYC.");
+    } else {
+      setProgress(100);
+      setOpenDialog(true);
+    }
   };
 
   const handleCloseDialog = () => {
-    setOpenDialog(false);
-    navigate("/bankdetails");
+    if (adhaarKYC) {
+      setProgress(100);
+      setOpenDialog(true);
+      navigate("/bankdetails");
+    }
   };
 
   return (
@@ -51,10 +58,11 @@ export default function AdhaarKYC() {
           </Typography>
           <FormGroup>
             <FormControlLabel
-              control={<Checkbox onChange={handleChange} />}
+              control={<Checkbox checked={adhaarKYC} onChange={handleChange} name="adhaarKYC" />}
               label="Check this box"
             />
           </FormGroup>
+          {error && <div style={{ color: "red" }}>{error}</div>}
           <Button variant="contained" color="primary" fullWidth onClick={handleProceedClick}>
             Proceed to Digilocker
           </Button>
