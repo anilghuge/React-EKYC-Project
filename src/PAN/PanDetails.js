@@ -69,7 +69,7 @@ function PanDetails() {
         <div>
               <div style={{ textAlign: "center" }}>
                 <img
-                  src="RightSymbol.png"
+                  src="assets/RightSymbol.png"
                   alt="RightSymbol"
                   style={{ width: "20%", height: "20%" }}
                 />

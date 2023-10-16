@@ -83,7 +83,7 @@ export default function AdhaarKYC() {
       {/* Success Dialog */}
       <Dialog open={openDialog} onClose={handleCloseDialog}>
       <div style={{ textAlign: "center" }}>
-        <img src="RightSymbol.png" alt="RightSymbol" style={{ width: "20%", height: "20%" }} />
+        <img src="assets/RightSymbol.png" alt="RightSymbol" style={{ width: "20%", height: "20%" }} />
       </div>
         <DialogTitle>Success</DialogTitle>
         <DialogContent>

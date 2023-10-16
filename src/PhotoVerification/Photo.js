@@ -1,52 +1,45 @@
-import React, { useState } from 'react';
-import { Container, Grid, LinearProgress, Typography, Button} from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import Paper from '@mui/material/Paper';
+import React, { useRef } from 'react';
+import { Button } from '@mui/material';
 
-export default function Photo() {
+const Camera = () => {
+  const videoRef = useRef();
 
-    const navigate = useNavigate();
-    const [progress, setProgress] = useState(0);
-  
-    const PhotoUpload = (event) => {
-        navigate("/photoverification");
-    };
+  const startCamera = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+      videoRef.current.srcObject = stream;
+    } catch (err) {
+      console.error('Error accessing the camera:', err);
+    }
+  };
 
-    return (
-        <Container>
-          <Grid
-            container
-            spacing={2}
-            justifyContent="center"
-            alignItems="center"
-            style={{ minHeight: "50vh" }}
-          >
-            <Grid item xs={12} sm={6}>
-              <Typography variant="h6" gutterBottom  sx={{mt : "70px"}}>
-                Liveliness Verification : {Math.round(progress)}%
-              </Typography>
-              <LinearProgress variant="determinate" value={progress} sx={{ width: "70%", height: "12px"}} />
-                
-                <Typography variant="h6" gutterBottom sx={{mt:"50px", fontWeight: 'bold'}}>
-                    Live Photo Verification
-                </Typography>
+  const takePhoto = () => {
+    const canvas = document.createElement('canvas');
+    const video = videoRef.current;
 
-              <Typography variant="h6" gutterBottom>
-                Turn on camera to click photo.
-                Ensure that your face and the code
-                are clearly visible.
-              </Typography><br/>       
-    
-            </Grid>
-            <Grid item xs={12} sm={6}>
-                <Paper elevation={3} sx={{ padding: '12px', maxWidth: '220px', margin: '0 auto', }}>
-                    <img src="avatar.jpg" alt="Avatar" style={{ width: "220px", height: "20%" }} />
-                    <Button variant="contained" color="primary" fullWidth onclick={PhotoUpload}>
-                        Capture
-                    </Button>
-                </Paper>
-            </Grid>
-          </Grid>
-        </Container>
-      )
-}
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+
+    const context = canvas.getContext('2d');
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+    const photoData = canvas.toDataURL('image/png');
+    console.log('Captured Photo Data:', photoData);
+
+    // You can now send `photoData` to your server or do any further processing
+  };
+
+  return (
+    <div>
+      <Button variant="contained" color="primary" onClick={startCamera}>
+        Start Camera
+      </Button>
+      <Button variant="contained" color="primary" onClick={takePhoto}>
+        Take Photo
+      </Button>
+      <video ref={videoRef} autoPlay muted style={{ display: 'block' }} />
+    </div>
+  );
+};
+
+export default Camera;

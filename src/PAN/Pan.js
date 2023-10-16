@@ -49,7 +49,7 @@ function Pan() {
           </Button>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <img src="panverification.png" alt="MobileVerfication" style={{ width: "100%", height: "auto" }} />
+          <img src="assets/panverification.png" alt="MobileVerfication" style={{ width: "100%", height: "auto" }} />
         </Grid>
       </Grid>
     </Container>

@@ -7,7 +7,6 @@ function OptVerification({ handleOTPVerification }) {
   const [mobileNumber, setMobileNumber] = useState("");
   const [otp, setOtp] = useState("");
   const [error, setError] = useState("");
-
   const handleVerifyClick = () => {
     if (/^\d{4}$/.test(otp)) {
       handleOTPVerification();
@@ -49,7 +48,7 @@ function OptVerification({ handleOTPVerification }) {
         alignItems="center"
         style={{ minHeight: "50vh" }}
       >
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={10} sm={4}>
           <Typography variant="h5" gutterBottom>
             Verify OTP
           </Typography>
@@ -86,7 +85,7 @@ function OptVerification({ handleOTPVerification }) {
         </Grid>
         <Grid item xs={12} sm={6}>
           <img
-            src="EnterOtp.avif"
+            src="assets/EnterOtp.avif"
             alt="OTPVerification"
             style={{ width: "70%", height: "50%" }}
           />

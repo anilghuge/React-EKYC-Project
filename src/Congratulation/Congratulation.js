@@ -18,7 +18,7 @@ const CongratulationsPage = () => {
             </Typography>
         </Grid>
         <Grid item xs={12}>
-        <img src="done.avif" alt="Done" style={{ width: "60%", height: "60%" }} />
+        <img src="assets/done.avif" alt="Done" style={{ width: "60%", height: "60%" }} />
         </Grid>
       </Grid>
     </Container>

@@ -27,7 +27,7 @@ function Email() {
         alignItems="center"
         style={{ minHeight: "50vh" }}
       >
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={10} sm={4}>
           <Typography variant="h5" gutterBottom>
             Your Email ID
           </Typography>
@@ -54,8 +54,8 @@ function Email() {
             Proceed
           </Button>
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <img src="Email.png" alt="Email" style={{ width: "100%", height: "auto" }} />
+        <Grid item xs={8} sm={4}>
+          <img src="assets/Email.png" alt="Email" style={{ width: "100%", height: "auto" }} />
         </Grid>
       </Grid>
     </Container>

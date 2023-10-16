@@ -59,7 +59,7 @@ export default function UploadBankProof() {
                 Document uploaded successfully!
               </Typography>
               <img
-                src="RightSymbol.png"
+                src="assets/RightSymbol.png"
                 alt="UploadSuccessImage"
                 style={{ width: "20%", height: "20%" }}
               />

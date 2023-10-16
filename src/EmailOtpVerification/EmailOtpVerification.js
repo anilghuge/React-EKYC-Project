@@ -58,7 +58,7 @@ export default function EmailOtpVerification({ handleVerification }) {
         alignItems="center"
         style={{ minHeight: "50vh" }}
       >
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={10} sm={4}>
           <Typography variant="h5" gutterBottom>
             Verify Email OTP
           </Typography>
@@ -88,8 +88,8 @@ export default function EmailOtpVerification({ handleVerification }) {
             Verify
           </Button>
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <img src="EmailVerification.avif" alt="MobileVerification" style={{ width: "70%", height: "50%" }} />
+        <Grid item xs={8} sm={4}>
+          <img src="assets/EmailVerification.avif" alt="MobileVerification" style={{ width: "70%", height: "50%" }} />
         </Grid>
       </Grid>
     </Container>

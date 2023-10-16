@@ -5,7 +5,7 @@ function Header({ authenticated, handleLogout }) {
   return (
     <AppBar position="static">
       <Toolbar>
-        <img src="/logo2.jfif" alt="Logo" />
+        <img src="assets/logo2.jfif" alt="Logo" />
       </Toolbar>
       {authenticated && (
         <Button onClick={handleLogout} style={{ color: 'red' }}>LOGOUT</Button>

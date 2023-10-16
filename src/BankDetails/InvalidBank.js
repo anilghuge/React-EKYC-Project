@@ -50,7 +50,7 @@ export default function InvalidBank() {
         </Grid>
         <Grid item xs={12} sm={6}>
           <img
-            src="FailedVerify.png"
+            src="assets/FailedVerify.png"
             alt="FailedVerify"
             style={{ width: "100%", height: "auto" }}
           />
